@@ -2,6 +2,7 @@ package app.pdg.learndaggerrxmvvm.ui
 
 import android.view.View
 import androidx.lifecycle.MutableLiveData
+import app.pdg.learndaggerrxmvvm.R
 import app.pdg.learndaggerrxmvvm.base.BaseViewModel
 import app.pdg.learndaggerrxmvvm.network.PostApi
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,6 +15,8 @@ class PostListViewModel:BaseViewModel() {
     lateinit var postApi: PostApi
 
     private lateinit var subscription: Disposable
+    val errorMessage:MutableLiveData<Int> = MutableLiveData()
+    val errorClickListener = View.OnClickListener { loadPosts() }
 
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
 
@@ -35,10 +38,12 @@ class PostListViewModel:BaseViewModel() {
 
     private fun onRetrievePostListStart(){
         loadingVisibility.value = View.VISIBLE
+        errorMessage.value = null
     }
 
     private fun onRetrievePostListFinish(){
         loadingVisibility.value = View.GONE
+
     }
 
     private fun onRetrievePostListSuccess(){
@@ -46,7 +51,7 @@ class PostListViewModel:BaseViewModel() {
     }
 
     private fun onRetrievePostListError(){
-
+        errorMessage.value = R.string.post_error
     }
 
     override fun onCleared() {
