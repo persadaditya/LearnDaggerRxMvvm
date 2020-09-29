@@ -1,7 +1,7 @@
 package app.pdg.learndaggerrxmvvm.injection.component
 
 import app.pdg.learndaggerrxmvvm.injection.module.NetworkModule
-import app.pdg.learndaggerrxmvvm.ui.PostListViewModel
+import app.pdg.learndaggerrxmvvm.ui.post.PostListViewModel
 import dagger.Component
 import javax.inject.Singleton
 

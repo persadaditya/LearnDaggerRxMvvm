@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="app.pdg.learndaggerrxmvvm.ui.PostListViewModel" />
+            type="app.pdg.learndaggerrxmvvm.ui.post.PostListViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,6 +23,7 @@
             android:id="@+id/post_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:adapter="@{viewModel.getPostListAdapter()}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

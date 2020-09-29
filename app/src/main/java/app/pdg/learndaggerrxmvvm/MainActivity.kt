@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.pdg.learndaggerrxmvvm.databinding.ActivityMainBinding
-import app.pdg.learndaggerrxmvvm.ui.PostListViewModel
+import app.pdg.learndaggerrxmvvm.ui.post.PostListViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {

@@ -1,10 +1,11 @@
-package app.pdg.learndaggerrxmvvm.ui
+package app.pdg.learndaggerrxmvvm.ui.post
 
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import app.pdg.learndaggerrxmvvm.R
 import app.pdg.learndaggerrxmvvm.base.BaseViewModel
 import app.pdg.learndaggerrxmvvm.network.PostApi
+import app.pdg.learndaggerrxmvvm.post.Post
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -17,6 +18,7 @@ class PostListViewModel:BaseViewModel() {
     private lateinit var subscription: Disposable
     val errorMessage:MutableLiveData<Int> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadPosts() }
+    val postListAdapter: PostListAdapter = PostListAdapter()
 
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
 
@@ -31,7 +33,7 @@ class PostListViewModel:BaseViewModel() {
             .doOnSubscribe { onRetrievePostListStart() }
             .doOnTerminate { onRetrievePostListFinish() }
             .subscribe(
-                { onRetrievePostListSuccess() },
+                { result -> onRetrievePostListSuccess(result) },
                 { onRetrievePostListError() }
             )
     }
@@ -46,8 +48,8 @@ class PostListViewModel:BaseViewModel() {
 
     }
 
-    private fun onRetrievePostListSuccess(){
-
+    private fun onRetrievePostListSuccess(postList:List<Post>){
+        postListAdapter.updatePostList(postList)
     }
 
     private fun onRetrievePostListError(){

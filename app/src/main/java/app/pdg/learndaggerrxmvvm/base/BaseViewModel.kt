@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import app.pdg.learndaggerrxmvvm.injection.component.DaggerViewModelInjector
 import app.pdg.learndaggerrxmvvm.injection.component.ViewModelInjector
 import app.pdg.learndaggerrxmvvm.injection.module.NetworkModule
-import app.pdg.learndaggerrxmvvm.ui.PostListViewModel
+import app.pdg.learndaggerrxmvvm.ui.post.PostListViewModel
 
 abstract class BaseViewModel: ViewModel() {
 
